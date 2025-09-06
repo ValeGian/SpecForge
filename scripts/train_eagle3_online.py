@@ -519,8 +519,7 @@ def main():
                     loss_mask=data["loss_mask"].cuda(),
                 )
 
-            for i, elem in enumerate(acces):
-                acces[i] = elem.item()
+            acces = [x.item() for x in acces]
 
             # calculate weighted loss
             ploss_weight = [0.8**i for i in range(len(plosses))]
@@ -604,8 +603,7 @@ def main():
                         loss_mask=data["loss_mask"].cuda(),
                     )
 
-                for i, elem in enumerate(acces):
-                    acces[i] = elem.item()
+                acces = [x.item() for x in acces]
 
                 eval_acces = [eval_acces[i] + [acces[i]] for i in range(len(acces))]
                 eval_plosses = [
